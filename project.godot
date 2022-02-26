@@ -1,0 +1,169 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "GameState",
+"language": "GDScript",
+"path": "res://src/game/game_state.gd"
+}, {
+"base": "Node",
+"class": "InputMng",
+"language": "GDScript",
+"path": "res://src/game/input_mng.gd"
+}, {
+"base": "AnimationPlayer",
+"class": "NetworkAnimationPlayer",
+"language": "GDScript",
+"path": "res://addons/godot-rollback-netcode/NetworkAnimationPlayer.gd"
+}, {
+"base": "Node",
+"class": "NetworkRandomNumberGenerator",
+"language": "GDScript",
+"path": "res://addons/godot-rollback-netcode/NetworkRandomNumberGenerator.gd"
+}, {
+"base": "Node",
+"class": "NetworkTimer",
+"language": "GDScript",
+"path": "res://addons/godot-rollback-netcode/NetworkTimer.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://src/chars/player/player.gd"
+} ]
+_global_script_class_icons={
+"GameState": "",
+"InputMng": "",
+"NetworkAnimationPlayer": "",
+"NetworkRandomNumberGenerator": "",
+"NetworkTimer": "",
+"Player": ""
+}
+
+[application]
+
+config/name="fighter-test"
+run/main_scene="res://src/game/game.scn"
+config/icon="res://icon.png"
+
+[autoload]
+
+SyncManager="*res://addons/godot-rollback-netcode/SyncManager.gd"
+SyncDebugger="*res://addons/godot-rollback-netcode/SyncDebugger.gd"
+InputSaver="*res://src/game/input_saver.gd"
+
+[debug]
+
+settings/fps/force_fps=60
+
+[display]
+
+window/size/width=960
+window/size/height=540
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/godot-rollback-netcode/plugin.cfg" )
+
+[input]
+
+p1_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p1_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p1_light={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":74,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p1_heavy={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":75,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p2_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":81,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p2_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p2_light={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":85,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p2_heavy={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":73,"unicode":0,"echo":false,"script":null)
+ ]
+}
+sync_debug={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Charas"
+2d_physics/layer_3="Hits"
+2d_physics/layer_4="Proyectiles"
+2d_physics/layer_5="Block"
+2d_physics/layer_6="Parry"
+
+[locale]
+
+test="es"
+fallback="es"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+2d/bp_hash_table_size=2048
+2d/cell_size=64
+2d/large_object_surface_threshold_in_cells=256
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/driver/fallback_to_gles2=true
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+2d/snapping/use_gpu_pixel_snap=true
+threads/thread_model=2
+threads/thread_safe_bvh=true
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+quality/directional_shadow/size=2048
+quality/directional_shadow/size.mobile=1024
+quality/shadow_atlas/size=2048
+quality/shadow_atlas/size.mobile=1024
+quality/shadow_atlas/cubemap_size=256
+quality/filters/anisotropic_filter_level=1
+quality/filters/use_nearest_mipmap_filter=true
+environment/default_environment="res://default_env.tres"
+
+[world]
+
+2d/cell_size=64

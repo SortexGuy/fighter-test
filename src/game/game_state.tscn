@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/game/game_state.gd" type="Script" id=1]
+[ext_resource path="res://src/chars/player/player.scn" type="PackedScene" id=2]
+[ext_resource path="res://src/game/input_mng.scn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 1280, 80 )
+
+[node name="GameState" type="Node"]
+script = ExtResource( 1 )
+
+[node name="InputMng" parent="." instance=ExtResource( 3 )]
+
+[node name="Charas" type="Camera2D" parent="."]
+position = Vector2( 0, 328 )
+current = true
+
+[node name="Player" parent="Charas" instance=ExtResource( 2 )]
+position = Vector2( -248, 32 )
+
+[node name="Player2" parent="Charas" instance=ExtResource( 2 )]
+position = Vector2( 320, 32 )
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="World"]
+position = Vector2( 0, 608 )
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Ground"]
+shape = SubResource( 9 )
